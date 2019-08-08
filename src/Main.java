@@ -1,10 +1,16 @@
+import javax.swing.*;
+
 public class Main {
     private int sample;
 
     public static void main(String[] args) {
-//        UserLogin loginPage = new UserLogin();
-        TableDisplay tableDisplay = new TableDisplay();
-        tableDisplay.
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                UserLogin loginPage = new UserLogin();
+            }
+        });
 
     }
 
