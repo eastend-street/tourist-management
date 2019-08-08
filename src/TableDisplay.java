@@ -18,7 +18,7 @@ public class TableDisplay extends JFrame {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setSize(500, 150);
+        setSize(500, 500);
 
         // Filter panel
         JPanel filterPanel = new JPanel();
@@ -97,16 +97,6 @@ public class TableDisplay extends JFrame {
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
 
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                TableDisplay app = new TableDisplay();
-                app.setVisible(true);
-            }
-        });
     }
 
 }

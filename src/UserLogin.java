@@ -6,6 +6,7 @@ public class UserLogin extends JFrame implements ActionListener {
 
     private JFrame loginFrame;
     private JFrame mainPageFrame;
+    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
     public UserLogin(){
         initUserLogin();
@@ -68,7 +69,6 @@ public class UserLogin extends JFrame implements ActionListener {
 
         // The code above is necessary to center the window at the center of the screen
 
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         loginFrame.setLocation(dim.width/2- loginFrame.getSize().width/2, dim.height/2- loginFrame.getSize().height/2);
 
 
@@ -76,8 +76,18 @@ public class UserLogin extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Button Pressed");
         loginFrame.dispose();
+        TableDisplay app = new TableDisplay();
+        app.setLocation(dim.width/2- loginFrame.getSize().width/2, dim.height/2- loginFrame.getSize().height/2);
+        app.setVisible(true);
+    }
+
+    Boolean checkingCredentials() {
+        return true;
+    }
+
+    void isUserAdmin() {
+        // code
     }
 }
 
