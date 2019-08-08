@@ -37,6 +37,7 @@ public class Database extends JFrame {
         ResultSet rs = null;
         try {
             Statement stmt = con.createStatement();
+            System.out.println(query);
             rs = stmt.executeQuery(query);
         } catch (Exception e) {
             throw new ClassCastException("It was not possible to select the data");
