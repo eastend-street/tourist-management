@@ -8,6 +8,7 @@ class AdminMainPage extends JFrame implements ActionListener {
     private JPanel p;
     private JButton TouristB;
     private JButton ActivityB;
+    private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
     public AdminMainPage(){
 
@@ -41,8 +42,11 @@ class AdminMainPage extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == TouristB) {
-            System.out.println("fefefe");
             p.setBackground(Color.ORANGE);
+            TableDisplay app = new TableDisplay();
+            app.setLocation(dim.width / 2 - app.getSize().width / 2, dim.height / 2 - app.getSize().height / 2);
+            app.setVisible(true);
+
         } else if (e.getSource() == ActivityB) {
             System.out.println("GOOD");
             p.setBackground(Color.WHITE);
