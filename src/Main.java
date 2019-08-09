@@ -1,6 +1,8 @@
+import dao.ActivityDAO;
 import dao.UserDAO;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class Main {
     private int sample;
