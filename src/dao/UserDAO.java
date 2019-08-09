@@ -20,8 +20,7 @@ public class UserDAO extends Database {
 
 
     public UserDAO selectUser(String userName, String password) {
-        String query = "SELECT * FROM Users WHERE user_name='" + userName +
-                "' AND user_password='" + password + "';";
+        String query = String.format("SELECT * FROM Users JOIN IsAdmin WHERE user_name='%s' AND user_password='%s';", userName, password);
 
         UserDAO user = new UserDAO();
         try {
@@ -82,8 +81,8 @@ public class UserDAO extends Database {
 
     public void insertUsers() {
         String query = String.format("INSERT INTO Users VALUES('%d','%d','%s','%s','%s','%s','%s','%s','%s','%d','%d','%d');",
-                this.isAdmin_id,this.user_id,this.first_name, this.last_name, this.phone, this.email, this.passport_number,this.user_name,this.user_password,
-                this.city_id,this.state_id,this.country_id);
+                this.isAdmin_id, this.user_id, this.first_name, this.last_name, this.phone, this.email, this.passport_number, this.user_name, this.user_password,
+                this.city_id, this.state_id, this.country_id);
         System.out.println(query);
         try {
             this.modify(query, "insert");
