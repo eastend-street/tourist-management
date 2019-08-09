@@ -45,14 +45,14 @@ public class CategoryDAO extends Database {
 
     public ArrayList<CategoryDAO> selectAll() {
         ArrayList<CategoryDAO> categories = new ArrayList<CategoryDAO>();
-        String query = "SELECT * FROM poi_category";
+        String query = "SELECT * FROM Category";
 
         try {
             ResultSet result = this.select(query);
             while (result.next()) {
                 CategoryDAO category = new CategoryDAO();
-                category.id = result.getInt("id");
-                category.name = result.getString("name");
+                category.id = result.getInt("category_id");
+                category.name = result.getString("category_name");
                 categories.add(category);
             }
         } catch (Exception e) {

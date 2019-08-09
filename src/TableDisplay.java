@@ -18,7 +18,7 @@ public class TableDisplay extends JFrame {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setSize(500, 500);
+        setSize(1000, 500);
 
         // Filter panel
         JPanel filterPanel = new JPanel();
@@ -91,11 +91,12 @@ public class TableDisplay extends JFrame {
         table.setModel(tableLogic);
 
         TableColumn col = table.getColumnModel().getColumn(0);
-        col.setCellRenderer(new MyTableCellRenderer());
-        col.setCellEditor(new MyCellEditor());
+        //col.setCellRenderer(new MyTableCellRenderer());
 
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
+
+
 
     }
 
