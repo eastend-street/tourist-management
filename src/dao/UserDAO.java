@@ -20,6 +20,7 @@ public class UserDAO extends Database {
     public UserDAO selectUser(String userName, String password) {
         String query = "SELECT * FROM Users WHERE user_name='" + userName +
                 "' AND user_password='" + password + "';";
+
         UserDAO user = new UserDAO();
         try {
             ResultSet result = this.select(query);
