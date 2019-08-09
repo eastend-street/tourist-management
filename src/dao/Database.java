@@ -50,6 +50,8 @@ public class Database extends JFrame {
             if (type.equals("update"))
                 stmt.executeUpdate();
             else
+                System.out.println(query);
+                System.out.println(stmt);
                 stmt.execute();
             con.close();
         } catch (Exception e) {
