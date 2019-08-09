@@ -7,11 +7,10 @@ import java.awt.event.*;
 public class UserLogin extends JFrame implements ActionListener {
 
     private JFrame loginFrame;
-    private JFrame mainPageFrame;
-    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+    private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
-    JTextField userNameTextField;
-    JTextField passwordTextField;
+    private JTextField userNameTextField;
+    private JTextField passwordTextField;
 
     private UserDAO userDAO = new UserDAO();
 
@@ -84,24 +83,27 @@ public class UserLogin extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
 
-        if (checkingCredentials()) {
-            loginFrame.dispose();
-            TableDisplay app = new TableDisplay();
-            app.setLocation(dim.width / 2 - loginFrame.getSize().width / 2, dim.height / 2 - loginFrame.getSize().height / 2);
-            app.setVisible(true);
-        }
+//        if (checkingCredentials()) {
+//            loginFrame.dispose();
+
+//        }
+        checkingCredentials();
     }
 
     private Boolean checkingCredentials() {
 
         Boolean credentialsCorrect = false;
         try {
-            String userName = userNameTextField.getText();
-            String password = passwordTextField.getText();
+            String userName = userNameTextField.getText().trim();
+            String password = passwordTextField.getText().trim();
             UserDAO currentUser = userDAO.selectUser(userName, password);
+
 
             if (currentUser.user_name.equals(userNameTextField.getText()) && currentUser.user_password.equals(passwordTextField.getText())) {
                 credentialsCorrect = true;
+
+                isUserAdmin(currentUser);
+
                 System.out.println("Logged in :)");
             }
 
@@ -109,13 +111,27 @@ public class UserLogin extends JFrame implements ActionListener {
             System.out.println("Username or Password invalid");
         }
 
-        System.out.println(credentialsCorrect);
 
         return credentialsCorrect;
     }
 
     void isUserAdmin(UserDAO currentUser) {
-        //
+        boolean isAdmin = false;
+        if (currentUser.isAdmin_id == 2) {
+            isAdmin = true;
+            System.out.println("Is admin!");
+            AdminMainPage app = new AdminMainPage();
+            app.setLocation(dim.width / 2 - loginFrame.getSize().width / 2, dim.height / 2 - loginFrame.getSize().height / 2);
+            app.setVisible(true);
+        } else {
+            isAdmin = false;
+            System.out.println("Not admin!");
+            TableDisplay app = new TableDisplay();
+            app.setLocation(dim.width / 2 - loginFrame.getSize().width / 2, dim.height / 2 - loginFrame.getSize().height / 2);
+            app.setVisible(true);
+
+        }
+        loginFrame.dispose();
     }
 }
 
